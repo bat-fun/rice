@@ -210,6 +210,7 @@ The default modifier is `SUPER`.
 | `SUPER + A`          | Application launcher |
 | `SUPER + B`          | Browser              |
 | `SUPER + C`          | Code - OSS           |
+| `SUPER + G`          | Google search        |
 | `SUPER + E`          | File manager         |
 | `SUPER + Q`          | Close window         |
 | `SUPER + L`          | Lock screen          |
