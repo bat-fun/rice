@@ -9,6 +9,7 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(p.menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(p.browser))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(p.code))
 
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("~/.config/hypr/scripts/google-search"))
 
 -- Random wallpaper
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-picker --random"))

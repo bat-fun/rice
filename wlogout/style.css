@@ -2,19 +2,19 @@
     font-family: "JetBrainsMono Nerd Font";
     font-size: 13px;
     font-weight: 600;
-    color: #F1F3ED;
+    color: #e2e2e9;
 }
 
 window {
-    background-color: rgba(8, 10, 15, 0.88);
+    background-color: alpha(#111318, 0.88);
 }
 
 button {
-    background-color: rgba(16, 20, 28, 0.94);
+    background-color: alpha(#0c0e13, 0.94);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 52px;
-    border: 1px solid rgba(48, 56, 69, 0.9);
+    border: 1px solid #8e9099;
     border-radius: 14px;
     box-shadow: none;
     margin: 8px;
@@ -33,11 +33,11 @@ button {
 
 button:hover,
 button:focus {
-    background-color: rgba(24, 30, 40, 0.98);
-    border-color: #B9D86B;
+    background-color: alpha(#282a2f, 0.98);
+    border-color: #adc6ff;
 }
 
 button:active {
-    background-color: rgba(185, 216, 107, 0.22);
+    background-color: alpha(#adc6ff, 0.22);
 }
 

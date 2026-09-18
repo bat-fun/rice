@@ -19,14 +19,15 @@ configuration {
 }
 
 window {
-    width: 94%;
+    width: 80%;
+    height: 50%;
     border: 1px;
     border-color: @noir-outline;
     border-radius: 4px;
     border-left: 3px;
     border-left-color: @accent;
     background-color: @bg;
-    padding: 20px;
+    padding: 10px;
 }
 
 mainbox {

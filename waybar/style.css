@@ -1,130 +1,131 @@
 @import url("waybar-colors.css");
 
 * {
-    border: none;
-    min-height: 0;
+  border: none;
+  min-height: 0;
 
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 12px;
-    font-weight: 500;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: 500;
 }
-
 
 /* =========================================================
    BAR
    ========================================================= */
 
 window#waybar {
-    background: alpha(@noir_bg, 0.88);
+  background: alpha(@noir_bg, 0.88);
 
-    border: 1px solid alpha(@noir_outline, 0.72);
-    border-radius: 14px;
-    padding: 0 9px;
-    margin: 0;
+  border: 1px solid alpha(@noir_outline, 0.72);
+  border-radius: 14px;
+  padding: 0 9px;
+  margin: 0;
 }
-
 
 /* =========================================================
    ARCH
    ========================================================= */
 
 #custom-arch {
-    margin-left: 4px;
-    margin-right: 10px;
-    padding: 0 9px;
+  /* margin-left: 10px; */
+  margin-right: 10px;
+  padding: 0 8px;
 
-    color: @noir_accent;
-    background: alpha(@noir_accent, 0.12);
-    border-radius: 7px;
+  color: @noir_accent;
+  background: alpha(@noir_accent, 0.12);
+  border-radius: 14px;
 
-    font-size: 14px;
-    font-weight: 700;
+  font-size: 14px;
+  font-weight: 700;
 
-    transition: color 180ms ease, background 180ms ease;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
 }
 
 #custom-control {
-    margin: 3px 7px 3px 0;
-    padding: 0 9px;
+  margin: 3px 7px 3px 0;
+  padding: 0 9px;
 
-    color: @noir_accent;
-    background: alpha(@noir_accent, 0.10);
-    border: 1px solid alpha(@noir_accent, 0.26);
-    border-radius: 7px;
+  color: @noir_accent;
+  background: alpha(@noir_accent, 0.1);
+  border: 1px solid alpha(@noir_accent, 0.26);
+  border-radius: 7px;
 
-    transition: color 180ms ease, background 180ms ease;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
 }
 
 #custom-control:hover {
-    color: @noir_text;
-    background: alpha(@noir_accent, 0.18);
+  color: @noir_text;
+  background: alpha(@noir_accent, 0.18);
 }
 
 #custom-arch:hover {
-    color: @noir_text;
-    background: alpha(@noir_accent, 0.18);
+  color: @noir_text;
+  background: alpha(@noir_accent, 0.18);
 }
-
 
 /* =========================================================
    WORKSPACES
    ========================================================= */
 
 #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 #workspaces button {
-    min-width: 20px;
+  min-width: 20px;
 
-    margin: 0;
-    padding: 0 6px;
+  margin: 0;
+  padding: 0 6px;
 
-    color: @noir_muted;
+  color: @noir_muted;
 
-    background: transparent;
-    border-radius: 6px;
+  background: transparent;
+  border-radius: 6px;
 
-    transition: color 180ms ease, background 180ms ease;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
 }
 
 #workspaces button:hover {
-    color: @noir_text;
-    background: alpha(@noir_text, 0.06);
+  color: @noir_text;
+  background: alpha(@noir_text, 0.06);
 }
 
 #workspaces button.active {
-    color: @noir_bg;
-    background: @noir_accent;
-    box-shadow: inset 0 -2px @noir_signal;
+  color: @noir_bg;
+  background: @noir_accent;
+  box-shadow: inset 0 -2px @noir_signal;
 }
 
 #workspaces button.urgent {
-    color: @noir_danger;
+  color: @noir_danger;
 }
-
 
 /* =========================================================
    CURRENT WINDOW
    ========================================================= */
 
 #window {
-    margin: 0 24px;
-    min-width: 180px;
+  margin: 0 24px;
+  min-width: 180px;
 
-    color: @noir_muted;
-    background: alpha(@noir_surface, 0.64);
-    border-radius: 7px;
-    padding: 0 14px;
+  color: @noir_muted;
+  background: alpha(@noir_surface, 0.64);
+  border-radius: 7px;
+  padding: 0 14px;
 
-    font-size: 11px;
-    font-weight: 400;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 #window.empty {
-    color: transparent;
+  color: transparent;
 }
-
 
 /* =========================================================
    SYSTEM MODULES
@@ -134,126 +135,122 @@ window#waybar {
 #bluetooth,
 #pulseaudio,
 #battery {
-    margin: 3px 4px 3px 0;
-    padding: 0 8px;
+  margin: 3px 4px 3px 0;
+  padding: 0 8px;
 
-    color: @noir_muted;
-    background: alpha(@noir_surface, 0.72);
-    border: 1px solid alpha(@noir_outline, 0.55);
-    border-radius: 7px;
+  color: @noir_muted;
+  background: alpha(@noir_surface, 0.72);
+  border: 1px solid alpha(@noir_outline, 0.55);
+  border-radius: 7px;
 
-    transition: color 180ms ease, opacity 180ms ease;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
 }
-
 
 /* Network */
 
 #network:hover {
-    color: @noir_text;
-    background: alpha(@noir_surface_alt, 0.82);
-    text-shadow: none;
+  color: @noir_text;
+  background: alpha(@noir_surface_alt, 0.82);
+  text-shadow: none;
 }
 
 #network.disconnected {
-    color: @noir_danger;
+  color: @noir_danger;
 }
-
 
 /* Bluetooth */
 
 #bluetooth {
-    min-width: 14px;
+  min-width: 14px;
 }
 
 #bluetooth.connected {
-    color: @noir_secondary;
-    text-shadow: none;
+  color: @noir_secondary;
+  text-shadow: none;
 }
 
 #bluetooth.off,
 #bluetooth.disabled {
-    color: alpha(@noir_muted, 0.55);
+  color: alpha(@noir_muted, 0.55);
 }
 
 #bluetooth:hover {
-    color: @noir_text;
-    background: alpha(@noir_surface_alt, 0.82);
+  color: @noir_text;
+  background: alpha(@noir_surface_alt, 0.82);
 }
-
 
 /* Audio */
 
 #pulseaudio:hover {
-    color: @noir_text;
-    background: alpha(@noir_surface_alt, 0.82);
-    text-shadow: none;
+  color: @noir_text;
+  background: alpha(@noir_surface_alt, 0.82);
+  text-shadow: none;
 }
 
 #pulseaudio.muted {
-    color: @noir_danger;
+  color: @noir_danger;
 }
-
 
 /* Battery */
 
 #battery.charging {
-    color: @noir_secondary;
+  color: @noir_secondary;
 }
 
 #battery.warning:not(.charging) {
-    color: @noir_accent;
+  color: @noir_accent;
 }
 
 #battery.critical:not(.charging) {
-    color: @noir_danger;
+  color: @noir_danger;
 }
 
 #battery:hover {
-    color: @noir_text;
-    background: alpha(@noir_surface_alt, 0.82);
+  color: @noir_text;
+  background: alpha(@noir_surface_alt, 0.82);
 }
-
 
 /* =========================================================
    CLOCK
    ========================================================= */
 
 #clock {
-    margin: 3px 4px 3px 2px;
-    padding: 0 10px;
+  margin: 3px 4px 3px 2px;
+  padding: 0 10px;
 
-    color: @noir_accent;
-    background: alpha(@noir_accent, 0.10);
-    border: 1px solid alpha(@noir_accent, 0.28);
-    border-radius: 7px;
-    text-shadow: none;
+  color: @noir_accent;
+  background: alpha(@noir_accent, 0.1);
+  border: 1px solid alpha(@noir_accent, 0.28);
+  border-radius: 7px;
+  text-shadow: none;
 
-    font-size: 12px;
-    font-weight: 500;
+  font-size: 12px;
+  font-weight: 500;
 
-    letter-spacing: 0;
+  letter-spacing: 0;
 }
-
 
 /* =========================================================
    TRAY
    ========================================================= */
 
 #tray {
-    margin: 3px 4px 3px 0;
+  margin: 3px 4px 3px 0;
 
-    padding: 0 8px;
+  padding: 0 8px;
 
-    color: @noir_muted;
-    background: alpha(@noir_surface, 0.72);
-    border: 1px solid alpha(@noir_outline, 0.55);
-    border-radius: 7px;
+  color: @noir_muted;
+  background: alpha(@noir_surface, 0.72);
+  border: 1px solid alpha(@noir_outline, 0.55);
+  border-radius: 7px;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
+  -gtk-icon-effect: highlight;
 }
