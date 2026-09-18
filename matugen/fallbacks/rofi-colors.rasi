@@ -1,12 +1,12 @@
 * {
-    noir-accent: #B9D86B;
-    noir-secondary: #7CC7D9;
-    noir-tertiary: #8496D5;
-    noir-muted: #8992A1;
-    noir-outline: #303845;
-    noir-danger: #EF7180;
-    noir-bg: #080A0F;
-    noir-surface: #10141C;
-    noir-surface-alt: #181E28;
-    noir-text: #F1F3ED;
+    noir-accent: #D6A85F;
+    noir-secondary: #8FA6A0;
+    noir-tertiary: #B59B72;
+    noir-muted: #777B82;
+    noir-outline: #3A3D43;
+    noir-danger: #C46D6D;
+    noir-bg: #090A0C;
+    noir-surface: #111318;
+    noir-surface-alt: #181B21;
+    noir-text: #E7E4DC;
 }

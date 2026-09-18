@@ -4,9 +4,16 @@
 -- =========================================================
 
 return {
-    accent = "{{colors.primary.dark.hex}}",
+    bg        = "{{colors.background.dark.hex}}",
+    surface   = "{{colors.surface_container_lowest.dark.hex}}",
+    surface2  = "{{colors.surface_container.dark.hex}}",
+    text      = "{{colors.on_background.dark.hex}}",
+    muted     = "{{colors.on_surface_variant.dark.hex}}",
+    accent    = "{{colors.primary.dark.hex}}",
     secondary = "{{colors.secondary.dark.hex}}",
-    danger = "{{colors.error.dark.hex}}",
-    inactive = "{{colors.outline.dark.hex}}",
-    signal = "{{colors.primary_container.dark.hex}}",
+    tertiary  = "{{colors.tertiary.dark.hex}}",
+    danger    = "{{colors.error.dark.hex}}",
+    outline   = "{{colors.outline.dark.hex}}",
+    signal    = "{{colors.primary_container.dark.hex}}",
+    inactive  = "{{colors.outline.dark.hex}}",
 }

@@ -81,7 +81,7 @@ apply_wallpaper() {
 
     if ! matugen \
         --mode dark \
-        --type scheme-tonal-spot \
+        --type scheme-fidelity \
         --source-color-index 0 \
         --quiet \
         image "$wallpaper"; then

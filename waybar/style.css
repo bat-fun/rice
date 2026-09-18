@@ -16,7 +16,7 @@
 window#waybar {
   background: alpha(@noir_bg, 0.88);
 
-  border: 1px solid alpha(@noir_outline, 0.72);
+  border: 1px solid alpha(@noir_outline, 0.42);
   border-radius: 14px;
   padding: 0 9px;
   margin: 0;
@@ -140,7 +140,7 @@ window#waybar {
 
   color: @noir_muted;
   background: alpha(@noir_surface, 0.72);
-  border: 1px solid alpha(@noir_outline, 0.55);
+  border: 1px solid alpha(@noir_outline, 0.32);
   border-radius: 7px;
 
   transition:

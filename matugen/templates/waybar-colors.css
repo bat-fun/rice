@@ -1,8 +1,9 @@
 @define-color noir_bg {{colors.background.dark.hex}};
 @define-color noir_surface {{colors.surface_container_lowest.dark.hex}};
 @define-color noir_surface_alt {{colors.surface_container_high.dark.hex}};
+@define-color noir_surface2 {{colors.surface_container.dark.hex}};
 
-@define-color noir_text #E7E4DC;
+@define-color noir_text {{colors.on_background.dark.hex}};
 @define-color noir_muted {{colors.on_surface_variant.dark.hex}};
 
 @define-color noir_accent {{colors.primary.dark.hex}};
@@ -10,5 +11,5 @@
 @define-color noir_tertiary {{colors.tertiary.dark.hex}};
 
 @define-color noir_danger {{colors.error.dark.hex}};
-@define-color noir_outline {{colors.outline.dark.hex}};
+@define-color noir_outline {{colors.outline_variant.dark.hex}};
 @define-color noir_signal {{colors.primary_container.dark.hex}};
