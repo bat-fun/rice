@@ -3,14 +3,14 @@
 add_newline = false
 
 format = """
-[▌](fg:#adc6ff) $directory\
+[▌](fg:#92ceff) $directory\
 $git_branch\
 $git_status\
 $character
 """
 
 [directory]
-style = "fg:#e2e2e9"
+style = "fg:#e1e2e6"
 format = "[$path]($style) "
 truncation_length = 3
 truncate_to_repo = false
@@ -18,14 +18,14 @@ read_only = " 󰌾"
 
 [git_branch]
 symbol = "󰊢 "
-style = "fg:#bfc6dc"
+style = "fg:#b2c9df"
 format = "[$symbol$branch]($style) "
 
 [git_status]
-style = "fg:#adc6ff"
+style = "fg:#92ceff"
 format = "([$all_status$ahead_behind]($style)) "
 
 [character]
-success_symbol = "[›](fg:#adc6ff)"
+success_symbol = "[›](fg:#92ceff)"
 error_symbol = "[›](fg:#ffb4ab)"
-vimcmd_symbol = "[‹](fg:#bfc6dc)"
+vimcmd_symbol = "[‹](fg:#b2c9df)"

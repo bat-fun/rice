@@ -2,11 +2,11 @@
 -- hunting through keybindings.
 
 local programs = {
-    terminal = "kitty",
+    terminal    = "kitty",
+    browser     = "brave",
+    menu        = "rofi -show drun -theme ~/.config/rofi/config.rasi",
+    code        = "code",
     fileManager = "thunar",
-    menu = "rofi -show drun -theme ~/.config/rofi/config.rasi",
-    code = "code",
-    browser = "brave",
 }
 
 _G.noir_programs = programs
