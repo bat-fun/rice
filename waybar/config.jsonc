@@ -2,7 +2,7 @@
   "position": "top",
   "layer": "top",
   "height": 34,
-  "margin": "8px 18px 0px 18px",
+  "margin": "10px 22px 0px 22px",
   "spacing": 0,
 
   "modules-left": ["custom/arch", "hyprland/workspaces"],
@@ -10,26 +10,26 @@
   "modules-center": ["hyprland/window"],
 
   "modules-right": [
-    // "tray",
+    "tray",
     "network",
     "bluetooth",
     "pulseaudio",
     "battery",
-    "clock",
-    "custom/control"
+    "clock"
+    // "custom/control"
   ],
 
   "custom/arch": {
     "format": " ",
     "tooltip": true,
-    "tooltip-format": "Arch Linux // Applications",
+    "tooltip-format": "Arch Linux // Rofi Launcher",
     "on-click": "rofi -show drun -config ~/.config/rofi/config.rasi"
   },
 
   "custom/control": {
     "format": "󰒓 ",
     "tooltip": true,
-    "tooltip-format": "Noir Signal // Control panel",
+    "tooltip-format": "Control panel",
     "on-click": "~/.config/hypr/scripts/control-panel"
   },
 
@@ -56,7 +56,8 @@
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",
     "tooltip-format": "{ifname}\n{ipaddr}",
-    "on-click": "nm-connection-editor"
+    "on-click": "nm-connection-editor",
+    "on-click-right": "kitty -e nmtui"
   },
 
   "bluetooth": {
@@ -94,9 +95,5 @@
   "clock": {
     "format": "{:%I:%M %p}",
     "tooltip-format": "{:%A · %d %B %Y}"
-  },
-
-  "tray": {
-    "spacing": 10
   }
 }
