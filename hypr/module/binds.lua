@@ -47,9 +47,38 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
--- Scratchpad
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(
+    mainMod .. " + TAB",
+    hl.dsp.exec_cmd("~/.config/hypr/scripts/workspace-dashboard"),
+    { description = "Open workspace dashboard" }
+)
+
+-- Scratchpad terminal
+local function toggle_scratchpad()
+    local scratchpad = hl.get_window("class:scratchpad")
+
+    if scratchpad ~= nil then
+        hl.dispatch(hl.dsp.workspace.toggle_special("scratchpad"))
+        return
+    end
+
+    hl.dispatch(hl.dsp.exec_cmd( "kitty --class scratchpad --title Scratchpad",
+            {
+                workspace = "special:scratchpad",
+                float = true,
+                center = true,
+                size = {
+                    "monitor_w * 0.75",
+                    "monitor_h * 0.70",
+                },
+            }
+        )
+    )
+end
+
+hl.bind(mainMod .. " + S", toggle_scratchpad, { description = "Toggle scratchpad terminal" })
+
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:scratchpad" }), { description = "Send window to scratchpad" })
 
 -- Workspace scrolling
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

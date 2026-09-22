@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+require_commands() {
+    local missing=()
+    local command
+
+    for command in "$@"; do
+        command -v "$command" >/dev/null 2>&1 || missing+=("$command")
+    done
+
+    if ((${#missing[@]})); then
+        printf 'Missing command(s): %s\n' "${missing[*]}" >&2
+        exit 1
+    fi
+}
+
+require_commands hyprctl jq rofi
+
+ROFI_THEME="$HOME/.config/rofi/workspace-dashboard.rasi"
+
+active="$(
+    hyprctl activeworkspace -j |
+        jq -r '.id'
+)"
+
+workspaces="$(
+    hyprctl workspaces -j
+)"
+
+clients="$(
+    hyprctl clients -j
+)"
+
+menu="$(
+    jq -nr \
+        --argjson workspaces "$workspaces" \
+        --argjson clients "$clients" \
+        --arg active "$active" '
+        $workspaces
+        | map(select(.id > 0))
+        | sort_by(.id)
+        | .[]
+        | . as $ws
+
+        | [
+            $clients[]
+            | select(.workspace.id == $ws.id)
+            | .class
+            | select(. != null and . != "")
+        ]
+        | unique
+        | .[0:4]
+        | join(" · ") as $apps
+
+        | (
+            if (($ws.id | tostring) == $active)
+            then "●"
+            else "○"
+            end
+        ) as $marker
+
+        | (
+            if (($ws.name // "") == "" or
+                ($ws.name // "") == ($ws.id | tostring))
+            then ("Workspace " + ($ws.id | tostring))
+            else $ws.name
+            end
+        ) as $name
+
+        | "\($ws.id)\t\($marker)  \($ws.id)  \($name)    [\($ws.windows) windows]    \($apps)"
+        '
+)"
+
+selected="$(
+    printf '%s\n' "$menu" |
+        rofi \
+            -dmenu \
+            -i \
+            -p "Workspace" \
+            -theme "$ROFI_THEME"
+)"
+
+[[ -n "$selected" ]] || exit 0
+
+workspace_id="${selected%%$'\t'*}"
+
+if [[ ! "$workspace_id" =~ ^[0-9]+$ ]]; then
+    printf 'Invalid workspace ID: %s\n' "$workspace_id" >&2
+    exit 1
+fi
+
+hyprctl dispatch "hl.dsp.focus({ workspace = \"$workspace_id\" })"

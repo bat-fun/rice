@@ -26,3 +26,18 @@ hl.window_rule({
     float = true,
 })
 
+hl.window_rule({
+    name = "scratchpad",
+    match = {
+        initial_class = "^scratchpad$",
+    },
+
+    float = true,
+
+    size = {
+        "monitor_w * 0.75",
+        "monitor_h * 0.70",
+    },
+
+    rounding = 12,
+})
