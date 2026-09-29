@@ -95,7 +95,7 @@ The configuration is modular, transparent, and meant to be changed.
 Copy and paste into your terminal:
 
 ```bash
-git clone https://github.com/bat-fun/noir-signal.git && cd noir-signal && chmod +x install.sh && ./install.sh
+git clone https://github.com/bat-fun/rice.git && cd rice && chmod +x install.sh && ./install.sh
 ```
 
 The installer checks your system, installs dependencies, backs up existing configuration, installs Rice, uses any wallpapers already in `~/Pictures/wallpaper`, generates the initial theme, and validates the result.
@@ -103,7 +103,7 @@ The installer checks your system, installs dependencies, backs up existing confi
 Want to see what it will do first?
 
 ```bash
-git clone https://github.com/bat-fun/noir-signal.git && cd noir-signal && chmod +x install.sh && ./install.sh --dry-run
+git clone https://github.com/bat-fun/rice.git && cd rice && chmod +x install.sh && ./install.sh
 ```
 
 ### MANUAL
@@ -111,8 +111,8 @@ git clone https://github.com/bat-fun/noir-signal.git && cd noir-signal && chmod 
 For users who want complete control.
 
 ```bash
-git clone https://github.com/bat-fun/noir-signal.git
-cd noir-signal
+git clone https://github.com/bat-fun/rice.git
+cd rice
 ```
 
 Back up your existing configuration, then install the required dependencies using your preferred Arch Linux workflow.
@@ -289,11 +289,6 @@ Just a desktop that stays out of the way.
 
 ---
 
-## CREDITS
-
-Rice is an original configuration built from scratch.
-
-The project was initially inspired by the visual direction and experimentation of [`bat-fun/batcave-hyprland`](https://github.com/bat-fun/batcave-hyprland), but Rice is independently structured and configured.
 
 ## LICENSE
 
