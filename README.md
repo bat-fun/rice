@@ -6,6 +6,14 @@
 
 Built from scratch for Arch Linux + Hyprland.
 
+<div align="center">
+
+**Wallpaper-driven. Matugen-powered. Modular Lua.**
+
+[Features](#features) · [Installation](#installation) · [Dynamic Theme](#dynamic-theme) · [Keybinds](#keybinds)
+
+</div>
+
 ## Preview
 
 <div align="center">
@@ -66,6 +74,35 @@ Nothing exists just to fill space.
 
 The configuration is modular, transparent, and meant to be changed.
 
+## WHY RICE
+
+The goal is not to ship the most feature-heavy Hyprland setup.
+
+The goal is to make the pieces behave like **one desktop**.
+
+```text
+                 WALLPAPER
+                     │
+                     ▼
+                  MATUGEN
+                     │
+             semantic color source
+                     │
+     ┌───────────────┼────────────────┐
+     ▼               ▼                ▼
+  Hyprland         Waybar           Kitty
+     │               │                │
+     └───────────────┼────────────────┘
+                     ▼
+              Rofi · Dunst
+                     │
+              Hyprlock · Wlogout
+```
+
+A wallpaper change is the starting point for the visual system, not just the background.
+
+The repository keeps the configuration sources together, while Matugen generates the runtime color files used by the desktop components.
+
 ---
 
 ## FEATURES
@@ -79,12 +116,11 @@ The configuration is modular, transparent, and meant to be changed.
 | **Rofi**       | Application + wallpaper launchers                      |
 | **Kitty**      | Terminal with matching palette                         |
 | **Hyprlock**   | Minimal lock screen                                    |
-| **Starship**   | Compact shell prompt                                   |
-| **Workflows**  | Clipboard, screenshots, media & system controls        |
+| **Starship**   | Compact developer shell prompt                        |
+| **Workflows**  | Clipboard, screenshots, media & system controls       |
+| **Workspaces** | Workspace dashboard + scratchpad terminal              |
 | **Wallpapers** | awww transitions using an independent local collection |
-| **Installer**  | Automatic setup with backup & validation               |
-
----
+| **Installer**  | Automatic setup with backup, staging & validation      |
 
 ## INSTALLATION
 
@@ -98,8 +134,15 @@ Copy and paste into your terminal:
 git clone https://github.com/bat-fun/rice.git && cd rice && chmod +x install.sh && ./install.sh
 ```
 
-The installer checks your system, installs dependencies, backs up existing configuration, installs Rice, uses any wallpapers already in `~/Pictures/wallpaper`, generates the initial theme, and validates the result.
+The installer checks your system, installs dependencies, backs up existing configuration, installs Rice, uses wallpapers already in `~/Pictures/wallpaper`, generates the initial theme, and validates the result.
 
+Want to preview the changes first?
+
+```bash
+./install.sh --dry-run
+```
+
+The installer does not bootstrap an AUR helper. When `brave-bin` or `wlogout` is missing, install and review `yay` separately before running the installer.
 
 ### MANUAL
 
@@ -118,22 +161,14 @@ The automatic installer does not bootstrap an AUR helper. Install and review
 Copy the configuration:
 
 ```bash
-cp -r hypr kitty matugen rofi waybar dunst ~/.config/
+cp -r hypr kitty matugen rofi waybar dunst wlogout gtk-3.0 ~/.config/
 cp starship.toml ~/.config/
 chmod +x ~/.config/hypr/scripts/*
 ```
 
 Create the generated theme files before starting Hyprland. The automatic
 installer does this for you; for a manual install, run Matugen after placing
-at least one image in `~/Pictures/wallpaper`:
-
-```bash
-mkdir -p ~/.cache/noir-signal
-cp matugen/fallbacks/* ~/.cache/noir-signal/
-cp matugen/fallbacks/waybar-colors.css ~/.config/waybar/
-```
-
-Once a wallpaper is available, run Matugen again to replace the fallback palette.
+at least one image in `~/Pictures/wallpaper`.
 
 Create the wallpaper directory:
 
@@ -168,7 +203,7 @@ Your wallpaper becomes the color source for the entire desktop.
      │      │      │
      └──────┼──────┘
             ▼
- Dunst · Rofi · Hyprlock
+ Dunst · Rofi · Hyprlock · Wlogout
 ```
 
 Change the wallpaper.
@@ -197,31 +232,31 @@ The installer does not download wallpapers and never overwrites your collection.
 
 The default modifier is `SUPER`.
 
-| Key                  | Action                    |
-| -------------------- | ------------------------- |
-| `SUPER + Enter`      | Terminal                  |
-| `SUPER + A`          | Application launcher      |
-| `SUPER + B`          | Browser                   |
-| `SUPER + C`          | Code - OSS                |
-| `SUPER + G`          | Google search             |
-| `SUPER + E`          | File manager              |
-| `SUPER + Q`          | Close window              |
-| `SUPER + L`          | Lock screen               |
-| `SUPER + R`          | Random wallpaper          |
-| `SUPER + D`          | Wallpaper picker          |
-| `SUPER + V`          | Clipboard picker          |
-| `SUPER + Shift + V`  | Clear clipboard           |
-| `SUPER + X`          | Logout menu               |
-| `SUPER + Arrow Keys` | Move focus                |
-| `SUPER + 1–9`        | Workspace                 |
-| `SUPER + 0`          | Workspace 10              |
-| `Print`              | Area screenshot           |
-| `Shift + Print`      | Full screenshot           |
-| `SUPER + Shift + P`  | Control panel             |
-| `SUPER + Shift + H`  | System check              |
-| `SUPER + TAB`        | Workspace dashboard       |
-| `SUPER + S`          | Scratchpad terminal       |
-| `SUPER + Shift + S`  | Send window to scratchpad |
+| Key                     | Action                    |
+| ----------------------- | ------------------------- |
+| `SUPER + Enter`         | Terminal                  |
+| `SUPER + A`             | Application launcher      |
+| `SUPER + B`             | Browser                   |
+| `SUPER + C`             | Code - OSS                |
+| `SUPER + G`             | Google search             |
+| `SUPER + E`             | File manager              |
+| `SUPER + Q`             | Close window              |
+| `SUPER + L`             | Lock screen               |
+| `SUPER + R`             | Random wallpaper          |
+| `SUPER + D`             | Wallpaper picker          |
+| `SUPER + V`             | Clipboard picker          |
+| `SUPER + Shift + V`     | Clear clipboard            |
+| `SUPER + Shift + P`     | Control panel             |
+| `SUPER + Shift + H`     | System check              |
+| `SUPER + TAB`            | Workspace dashboard       |
+| `SUPER + S`               | Scratchpad terminal       |
+| `SUPER + Shift + S`       | Send window to scratchpad |
+| `SUPER + X`               | Logout menu               |
+| `SUPER + Arrow Keys`      | Move focus                |
+| `SUPER + 1–9`             | Workspace                 |
+| `SUPER + 0`               | Workspace 10              |
+| `Print`                   | Area screenshot            |
+| `Shift + Print`           | Full screenshot            |
 
 Additional controls are defined in `hypr/module/binds.lua`.
 
@@ -232,7 +267,7 @@ Additional controls are defined in `hypr/module/binds.lua`.
 Everything is intentionally exposed.
 
 ```text
-noir-signal/
+rice/
 ├── hypr/
 │   ├── hyprland.lua
 │   ├── hyprlock.conf
@@ -240,6 +275,7 @@ noir-signal/
 │   └── scripts/
 ├── kitty/
 ├── matugen/
+│   ├── fallbacks/
 │   └── templates/
 ├── rofi/
 ├── waybar/
@@ -271,7 +307,23 @@ matugen/templates/
 
 The automatic installer handles the required desktop components and supporting tools, including:
 
-`Hyprland` · `Hyprlock` · `Waybar` · `Dunst` · `Rofi` · `Kitty` · `Matugen` · `Starship` · `Thunar` · `Brave` · `Code - OSS` · `awww` · `cliphist` · `grim` · `slurp` · `playerctl` · `PipeWire` · `NetworkManager` · `Blueman` · `brightnessctl` · `jq` · `wlogout`
+`Hyprland` · `Hyprlock` · `Waybar` · `Dunst` · `Rofi` · `Kitty` · `Matugen` · `Starship` · `Thunar` · `Brave` · `Code - OSS` · `awww` · `cliphist` · `wl-clipboard` · `grim` · `slurp` · `playerctl` · `PipeWire` · `NetworkManager` · `Blueman` · `brightnessctl` · `jq` · `wlogout`
+
+---
+
+## VALIDATION
+
+Before committing changes, run:
+
+```bash
+./install.sh --dry-run
+bash -n install.sh
+bash -n hypr/scripts/*
+git diff --check
+```
+
+The repository keeps generated theme sources under `matugen/templates/` and the
+checked-in runtime configuration aligned with those sources.
 
 ---
 
@@ -288,3 +340,7 @@ No bloated framework.
 Just a desktop that stays out of the way.
 
 ---
+
+## LICENSE
+
+MIT
