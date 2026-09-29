@@ -100,11 +100,6 @@ git clone https://github.com/bat-fun/rice.git && cd rice && chmod +x install.sh 
 
 The installer checks your system, installs dependencies, backs up existing configuration, installs Rice, uses any wallpapers already in `~/Pictures/wallpaper`, generates the initial theme, and validates the result.
 
-Want to see what it will do first?
-
-```bash
-git clone https://github.com/bat-fun/rice.git && cd rice && chmod +x install.sh && ./install.sh
-```
 
 ### MANUAL
 
@@ -194,9 +189,7 @@ separate wallpaper repository independently:
 
 Rice only reads supported image files from that directory at runtime.
 
-Or let the installer add the optional Rice collection.
-
-Existing wallpapers are preserved.
+The installer does not download wallpapers and never overwrites your collection.
 
 ---
 
@@ -204,26 +197,31 @@ Existing wallpapers are preserved.
 
 The default modifier is `SUPER`.
 
-| Key                  | Action               |
-| -------------------- | -------------------- |
-| `SUPER + Enter`      | Terminal             |
-| `SUPER + A`          | Application launcher |
-| `SUPER + B`          | Browser              |
-| `SUPER + C`          | Code - OSS           |
-| `SUPER + G`          | Google search        |
-| `SUPER + E`          | File manager         |
-| `SUPER + Q`          | Close window         |
-| `SUPER + L`          | Lock screen          |
-| `SUPER + R`          | Random wallpaper     |
-| `SUPER + D`          | Wallpaper picker     |
-| `SUPER + V`          | Clipboard picker     |
-| `SUPER + Shift + V`  | Clear clipboard      |
-| `SUPER + X`          | Logout menu          |
-| `SUPER + Arrow Keys` | Move focus           |
-| `SUPER + 1–9`        | Workspace            |
-| `SUPER + 0`          | Workspace 10         |
-| `Print`              | Area screenshot      |
-| `Shift + Print`      | Full screenshot      |
+| Key                  | Action                    |
+| -------------------- | ------------------------- |
+| `SUPER + Enter`      | Terminal                  |
+| `SUPER + A`          | Application launcher      |
+| `SUPER + B`          | Browser                   |
+| `SUPER + C`          | Code - OSS                |
+| `SUPER + G`          | Google search             |
+| `SUPER + E`          | File manager              |
+| `SUPER + Q`          | Close window              |
+| `SUPER + L`          | Lock screen               |
+| `SUPER + R`          | Random wallpaper          |
+| `SUPER + D`          | Wallpaper picker          |
+| `SUPER + V`          | Clipboard picker          |
+| `SUPER + Shift + V`  | Clear clipboard           |
+| `SUPER + X`          | Logout menu               |
+| `SUPER + Arrow Keys` | Move focus                |
+| `SUPER + 1–9`        | Workspace                 |
+| `SUPER + 0`          | Workspace 10              |
+| `Print`              | Area screenshot           |
+| `Shift + Print`      | Full screenshot           |
+| `SUPER + Shift + P`  | Control panel             |
+| `SUPER + Shift + H`  | System check              |
+| `SUPER + TAB`        | Workspace dashboard       |
+| `SUPER + S`          | Scratchpad terminal       |
+| `SUPER + Shift + S`  | Send window to scratchpad |
 
 Additional controls are defined in `hypr/module/binds.lua`.
 
@@ -246,6 +244,8 @@ noir-signal/
 ├── rofi/
 ├── waybar/
 ├── dunst/
+├── wlogout/
+├── gtk-3.0/
 ├── starship.toml
 ├── install.sh
 ├── LICENSE
@@ -271,7 +271,7 @@ matugen/templates/
 
 The automatic installer handles the required desktop components and supporting tools, including:
 
-`Hyprland` · `Hyprlock` · `Waybar` · `Dunst` · `Rofi` · `Kitty` · `Matugen` · `Starship` · `Thunar` · `Brave` · `Code - OSS` · `awww` · `cliphist` · `grim` · `slurp` · `playerctl` · `PipeWire` · `NetworkManager` · `Blueman` · `brightnessctl` · `wlogout`
+`Hyprland` · `Hyprlock` · `Waybar` · `Dunst` · `Rofi` · `Kitty` · `Matugen` · `Starship` · `Thunar` · `Brave` · `Code - OSS` · `awww` · `cliphist` · `grim` · `slurp` · `playerctl` · `PipeWire` · `NetworkManager` · `Blueman` · `brightnessctl` · `jq` · `wlogout`
 
 ---
 
@@ -288,8 +288,3 @@ No bloated framework.
 Just a desktop that stays out of the way.
 
 ---
-
-
-## LICENSE
-
-MIT

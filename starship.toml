@@ -80,7 +80,7 @@ deleted = "✘${count} "
 
 [git_state]
 format = "[$state( $progress_current/$progress_total)]($style) "
-style = "bold bright-tertiary"
+style = "bold tertiary"
 
 [git_metrics]
 disabled = false
@@ -188,7 +188,7 @@ style = "bold primary"
 
 [localip]
 ssh_only = true
-format = "[◯ $localipv4](bold bright-tertiary) "
+format = "[◯ $localipv4](bold tertiary) "
 
 [battery]
 format = "[$percentage $symbol]($style) "

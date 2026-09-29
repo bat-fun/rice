@@ -36,7 +36,7 @@ check_service() {
 
 printf 'RICE SYSTEM CHECK\n\n'
 
-for command in hyprctl waybar dunst rofi kitty starship matugen grim notify-send; do
+for command in hyprctl waybar dunst rofi kitty starship matugen grim notify-send jq wlogout; do
     check_command "$command"
 done
 
@@ -91,7 +91,7 @@ else
 fi
 
 printf '\nDynamic theme outputs\n'
-for file in "$HOME/.cache/noir-signal/colors.css" "$HOME/.cache/noir-signal/kitty-colors.conf" "$HOME/.cache/noir-signal/rofi-colors.rasi" "$HOME/.cache/noir-signal/hyprland-colors.lua" "$HOME/.cache/noir-signal/hyprlock-colors.conf" "$HOME/.config/waybar/waybar-colors.css" "$HOME/.config/dunst/dunstrc"; do
+for file in "$HOME/.cache/noir-signal/colors.css" "$HOME/.cache/noir-signal/kitty-colors.conf" "$HOME/.cache/noir-signal/rofi-colors.rasi" "$HOME/.cache/noir-signal/hyprland-colors.lua" "$HOME/.cache/noir-signal/hyprlock-colors.conf" "$HOME/.config/waybar/waybar-colors.css" "$HOME/.config/dunst/dunstrc" "$HOME/.config/starship.toml" "$HOME/.config/wlogout/style.css"; do
     if [[ -s "$file" ]]; then
         pass "generated: ${file##*/}"
     else

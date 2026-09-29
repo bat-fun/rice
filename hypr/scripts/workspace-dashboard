@@ -90,4 +90,4 @@ if [[ ! "$workspace_id" =~ ^[0-9]+$ ]]; then
     exit 1
 fi
 
-hyprctl dispatch "hl.dsp.focus({ workspace = \"$workspace_id\" })"
+hyprctl eval "hl.dispatch(hl.dsp.focus({ workspace = \"$workspace_id\" }))"

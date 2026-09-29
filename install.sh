@@ -50,6 +50,7 @@ CORE_PACKAGES=(
 
 RUNTIME_PACKAGES=(
     git
+    jq
     awww
     cliphist
     wl-clipboard
@@ -99,6 +100,7 @@ REQUIRED_COMMANDS=(
     nm-applet
     blueman-manager
     brightnessctl
+    jq
     wlogout
 )
 
@@ -109,6 +111,8 @@ CONFIG_TARGETS=(
     rofi
     waybar
     dunst
+    wlogout
+    gtk-3.0
     starship.toml
 )
 
@@ -334,6 +338,11 @@ check_environment() {
         "$REPO_ROOT/matugen/config.toml"
         "$REPO_ROOT/rofi/config.rasi"
         "$REPO_ROOT/waybar/config.jsonc"
+        "$REPO_ROOT/dunst/dunstrc"
+        "$REPO_ROOT/wlogout/layout"
+        "$REPO_ROOT/wlogout/style.css"
+        "$REPO_ROOT/gtk-3.0/settings.ini"
+        "$REPO_ROOT/hypr/scripts/workspace-dashboard"
         "$REPO_ROOT/starship.toml"
     )
     local file
@@ -579,6 +588,7 @@ prepare_stage() {
     cp -a -- "$REPO_ROOT/waybar" "$STAGING_DIR/config/waybar"
     cp -a -- "$REPO_ROOT/dunst" "$STAGING_DIR/config/dunst"
     cp -a -- "$REPO_ROOT/wlogout" "$STAGING_DIR/config/wlogout"
+    cp -a -- "$REPO_ROOT/gtk-3.0" "$STAGING_DIR/config/gtk-3.0"
     cp -a -- "$REPO_ROOT/starship.toml" "$STAGING_DIR/config/starship.toml"
 
     success "Configuration staged."
@@ -608,6 +618,10 @@ validate_stage() {
         "$STAGING_DIR/config/hypr/scripts/clipboard-picker"
         "$STAGING_DIR/config/hypr/scripts/screenshot"
         "$STAGING_DIR/config/hypr/scripts/wallpaper-picker"
+        "$STAGING_DIR/config/hypr/scripts/workspace-dashboard"
+        "$STAGING_DIR/config/hypr/scripts/control-panel"
+        "$STAGING_DIR/config/hypr/scripts/google-search"
+        "$STAGING_DIR/config/hypr/scripts/system-check"
         "$STAGING_DIR/config/kitty/kitty.conf"
         "$STAGING_DIR/config/matugen/config.toml"
         "$STAGING_DIR/config/matugen/templates/hyprland-colors.lua"
@@ -622,6 +636,7 @@ validate_stage() {
         "$STAGING_DIR/config/rofi/noir-signal-wallpaper.rasi"
         "$STAGING_DIR/config/wlogout/layout"
         "$STAGING_DIR/config/wlogout/style.css"
+        "$STAGING_DIR/config/gtk-3.0/settings.ini"
         "$STAGING_DIR/config/waybar/config.jsonc"
         "$STAGING_DIR/config/waybar/style.css"
         "$STAGING_DIR/config/dunst/dunstrc"
@@ -715,8 +730,12 @@ set_script_permissions() {
 
     local scripts=(
         "$CONFIG_DIR/hypr/scripts/clipboard-picker"
+        "$CONFIG_DIR/hypr/scripts/control-panel"
+        "$CONFIG_DIR/hypr/scripts/google-search"
         "$CONFIG_DIR/hypr/scripts/screenshot"
+        "$CONFIG_DIR/hypr/scripts/system-check"
         "$CONFIG_DIR/hypr/scripts/wallpaper-picker"
+        "$CONFIG_DIR/hypr/scripts/workspace-dashboard"
     )
     local script
 
@@ -947,7 +966,7 @@ bootstrap_theme() {
         info "No active Wayland session detected; wallpaper application skipped."
     fi
 
-    matugen --mode dark --type scheme-tonal-spot --source-color-index 0 --quiet image "$selected"
+    matugen --mode dark --type scheme-fidelity --source-color-index 0 --quiet image "$selected"
     write_runtime_wallpaper_cache "$selected"
 
     local expected=(
@@ -958,6 +977,8 @@ bootstrap_theme() {
         "$HOME/.cache/noir-signal/rofi-colors.rasi"
         "$CONFIG_DIR/dunst/dunstrc"
         "$CONFIG_DIR/waybar/waybar-colors.css"
+        "$CONFIG_DIR/starship.toml"
+        "$CONFIG_DIR/wlogout/style.css"
     )
     local file
 
@@ -1042,8 +1063,12 @@ validate_installation() {
 
     local scripts=(
         "$CONFIG_DIR/hypr/scripts/clipboard-picker"
+        "$CONFIG_DIR/hypr/scripts/control-panel"
+        "$CONFIG_DIR/hypr/scripts/google-search"
         "$CONFIG_DIR/hypr/scripts/screenshot"
+        "$CONFIG_DIR/hypr/scripts/system-check"
         "$CONFIG_DIR/hypr/scripts/wallpaper-picker"
+        "$CONFIG_DIR/hypr/scripts/workspace-dashboard"
     )
     local script
     for script in "${scripts[@]}"; do
